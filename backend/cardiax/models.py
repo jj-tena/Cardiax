@@ -6,8 +6,11 @@ class User(models.Model):
     surname = models.CharField(max_length=100)
     email = models.CharField(max_length=100) 
     password = models.CharField(max_length=100)
+    def analytics_list(self):
+        return self.analytics.all()
 
 class Analytic(models.Model):
+    user = models.ForeignKey('User', related_name='analytics', on_delete=models.CASCADE)
     heartDiseaseorAttack = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(1)])
     highBP = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(1)])
     highChol = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(1)])

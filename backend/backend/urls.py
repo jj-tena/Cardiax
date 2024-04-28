@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from cardiax.api.views import UserAnalyticsAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('cardiax.api.urls'))
+    path('api/', include('cardiax.api.urls')),
+    path('api/users/<int:user_id>/analytics/', UserAnalyticsAPIView.as_view())
 ]
