@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db-cardiax:
+    container_name: db-cardiax
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: db-cardiax
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    command: -p 5432
