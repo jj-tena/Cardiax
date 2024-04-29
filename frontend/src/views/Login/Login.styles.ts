@@ -1,5 +1,5 @@
 const LoginStyles = {
-    main: {}
+    main: {marginTop: '100px'}
 }
 
 export default LoginStyles;

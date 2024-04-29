@@ -1,15 +1,20 @@
 import React from "react";
 import LogoutStyles from "./Logout.styles";
 import useLogout from "./Logout";
+import { Container, Typography } from "@mui/material";
+import Header from "components/Header";
 
 const Logout = () => {
 
     const {} = useLogout();
 
     return (
-        <div style={LogoutStyles.main}>
-            <h1>Logout</h1>
-        </div>
+        <Container>
+            <Header/>
+            <Container style={LogoutStyles.main}>
+                <Typography>Logout</Typography>
+            </Container>
+        </Container>
     )
 }
 

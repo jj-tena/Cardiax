@@ -1,15 +1,20 @@
 import React from "react";
 import RegisterStyles from "./Register.styles";
 import useRegister from "./Register";
+import { Container, Typography } from "@mui/material";
+import Header from "components/Header";
 
 const Register = () => {
 
     const {} = useRegister();
 
     return (
-        <div style={RegisterStyles.main}>
-            <h1>Register</h1>
-        </div>
+        <Container>
+            <Header/>
+            <Container style={RegisterStyles.main}>
+                <Typography>Register</Typography>
+            </Container>
+        </Container>
     )
 }
 

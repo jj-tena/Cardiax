@@ -1,5 +1,5 @@
 const EvolutionStyles = {
-    main: {}
+    main: {marginTop: '100px'}
 }
 
 export default EvolutionStyles;
