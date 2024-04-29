@@ -1,15 +1,16 @@
 import React from "react";
 import HomeStyles from "./Home.styles";
 import useHome from "./Home";
+import { Container, Typography } from "@mui/material";
 
 const Home = () => {
 
     const {} = useHome();
 
     return (
-        <div style={HomeStyles.main}>
-            <h1>Home</h1>
-        </div>
+        <Container style={HomeStyles.main}>
+            <Typography>Home</Typography>
+        </Container>
     )
 }
 
