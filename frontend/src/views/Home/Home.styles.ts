@@ -1,5 +1,5 @@
 const HomeStyles = {
-    main: {marginTop: '100px'}
+    main: {marginTop: '120px'}
 }
 
 export default HomeStyles;
