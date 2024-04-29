@@ -1,10 +1,16 @@
 import React from "react";
+import EvolutionStyles from "./Evolution.styles";
+import useEvolution from "./Evolution";
 
-const Home = () => {
+const Evolution = () => {
+
+    const {} = useEvolution();
 
     return (
-        <h1>Evolution</h1>
+        <div style={EvolutionStyles.main}>
+            <h1>Evolution</h1>
+        </div>
     )
 }
 
-export default Home;
+export default Evolution;

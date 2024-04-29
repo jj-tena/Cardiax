@@ -1,9 +1,15 @@
 import React from "react";
+import HomeStyles from "./Home.styles";
+import useHome from "./Home";
 
 const Home = () => {
 
+    const {} = useHome();
+
     return (
-        <h1>Home</h1>
+        <div style={HomeStyles.main}>
+            <h1>Home</h1>
+        </div>
     )
 }
 

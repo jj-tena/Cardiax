@@ -1,10 +1,16 @@
 import React from "react";
+import RegisterStyles from "./Register.styles";
+import useRegister from "./Register";
 
-const Home = () => {
+const Register = () => {
+
+    const {} = useRegister();
 
     return (
-        <h1>Register</h1>
+        <div style={RegisterStyles.main}>
+            <h1>Register</h1>
+        </div>
     )
 }
 
-export default Home;
+export default Register;

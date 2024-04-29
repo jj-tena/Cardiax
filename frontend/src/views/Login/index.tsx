@@ -1,10 +1,16 @@
 import React from "react";
+import LoginStyles from "./Login.styles";
+import useLogin from "./Login";
 
-const Home = () => {
+const Login = () => {
+
+    const {} = useLogin();
 
     return (
-        <h1>Login</h1>
+        <div style={LoginStyles.main}>
+            <h1>Login</h1>
+        </div>
     )
 }
 
-export default Home;
+export default Login;

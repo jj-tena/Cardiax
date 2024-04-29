@@ -1,10 +1,16 @@
 import React from "react";
+import AddAnalyticStyles from "./AddAnalytic.styles";
+import useAddAnalytic from "./AddAnalytic";
 
-const Home = () => {
+const AddAnalytic = () => {
+
+    const {} = useAddAnalytic();
 
     return (
-        <h1>Add analytic</h1>
+        <div style={AddAnalyticStyles.main}>
+            <h1>AddAnalytic</h1>
+        </div>
     )
 }
 
-export default Home;
+export default AddAnalytic;
