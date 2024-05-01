@@ -1,23 +1,12 @@
+import React from 'react';
+import { AppBar, Box, Toolbar, Typography, IconButton, Menu } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import HeaderStyles from "./Header.styles";
 import useHeader from "./Header";
 
-import React, { useState } from 'react';
-import { AppBar, Box, Toolbar, Typography, IconButton, Menu } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-
 const Header = () => {
 
-    const isAuthenticated = false;
-
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-    const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-    };
+    const {isAuthenticated, anchorEl, handleMenuOpen, handleMenuClose} = useHeader();
 
     return (
         <AppBar position="fixed" sx={{ width: '100%', top: 0, bgcolor: 'black', marginBottom: '350px' }}>
@@ -30,7 +19,7 @@ const Header = () => {
                     {isAuthenticated ? (
                         <>
                             <Typography variant="h6">
-                                <a href="/add-analytics" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'white', display: 'block', padding: '8px 16px' }}>Añadir analítica</a>
+                                <a href="/add-analytic" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'white', display: 'block', padding: '8px 16px' }}>Añadir analítica</a>
                             </Typography>
                             <Typography variant="h6">
                                 <a href="/analytics" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'white', display: 'block', padding: '8px 16px' }}>Ver analíticas</a>
@@ -66,7 +55,7 @@ const Header = () => {
                         {isAuthenticated ? (
                         <>
                             <Typography variant="h6">
-                                <a href="/add-analytics" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'black', display: 'block', padding: '8px 16px' }}>Añadir analítica</a>
+                                <a href="/add-analytic" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'black', display: 'block', padding: '8px 16px' }}>Añadir analítica</a>
                             </Typography>
                             <Typography variant="h6">
                                 <a href="/analytics" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'black', display: 'block', padding: '8px 16px' }}>Ver analíticas</a>
