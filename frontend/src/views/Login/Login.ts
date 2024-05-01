@@ -19,15 +19,13 @@ const useLogin = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         console.log(`email: ${email} password: ${password}`);
-        login();
-        /**
         try {
-            const response = await axios.post('/login', { email, password });
-            console.log('Respuesta del servidor:', response.data);
+            const response = await axios.post('http://127.0.0.1:8000/api/users/login/', { email, password });
+            console.log('Respuesta del servidor:', response.data.token);
+            login(response.data.token);
         } catch (error) {
             console.error('Error al iniciar sesión:', error);
         }
-        */
     };
 
     return {email, setEmail, password, setPassword, isSubmitEnabled, handleInputChange, handleSubmit};

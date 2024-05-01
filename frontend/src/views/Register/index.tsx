@@ -6,7 +6,7 @@ import Header from "components/Header";
 
 const Register = () => {
 
-    const {name, setName, lastName, setLastName, email, setEmail, password, confirmPassword, 
+    const {name, setName, surname, setSurname, email, setEmail, password, confirmPassword, 
         submitEnabled, error, handleSubmit, handleInputChange, handlePasswordChange, handleConfirmPasswordChange} = useRegister();
 
     return (
@@ -38,8 +38,8 @@ const Register = () => {
                                         label="Apellidos"
                                         type="text"
                                         required
-                                        value={lastName}
-                                        onChange={handleInputChange(setLastName)}
+                                        value={surname}
+                                        onChange={handleInputChange(setSurname)}
                                     />
                                     <TextField
                                         label="Correo electrónico"

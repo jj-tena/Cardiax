@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 interface AuthContextType {
     isAuthenticated: boolean;
-    login: () => void;
+    login: (token: string) => void;
     logout: () => void;
 }
 
@@ -26,18 +26,23 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
         return storedAuth ? JSON.parse(storedAuth) : false;
     });
 
+    const [jwt, setJwt] = useState('');
+
     useEffect(() => {
         localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
+        localStorage.setItem('jwt', JSON.stringify(jwt));
     }, [isAuthenticated]);
     
-    const login = () => {
+    const login = (token: string) => {
         setIsAuthenticated(true);
+        setJwt(token);
         history.push('/analytics');
         window.location.reload();
     };
 
     const logout = () => {
         setIsAuthenticated(false);
+        setJwt('');
         history.push('/');
         window.location.reload();
     };

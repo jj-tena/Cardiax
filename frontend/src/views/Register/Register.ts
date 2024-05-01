@@ -7,7 +7,7 @@ const useRegister = () => {
     const { login } = useAuth();
 
     const [name, setName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -20,15 +20,13 @@ const useRegister = () => {
             setError('Las contraseñas no coinciden');
             return;
         }
-        login();
-        /**
         try {
-            const response = await axios.post('/register', { name, lastName, email, password });
+            const response = await axios.post('http://127.0.0.1:8000/api/users/register/', { name, surname, email, password });
             console.log('Respuesta del servidor:', response.data);
+            login(response.data.jwt);
         } catch (error) {
             console.error('Error al registrar:', error);
         }
-        */
     };
 
     const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +47,7 @@ const useRegister = () => {
         setError(value !== password ? 'Las contraseñas no coinciden' : '');
     };
 
-    return {name, setName, lastName, setLastName, email, setEmail, password, confirmPassword, 
+    return {name, setName, surname, setSurname, email, setEmail, password, confirmPassword, 
         submitEnabled, error, handleSubmit, handleInputChange, handlePasswordChange, handleConfirmPasswordChange};
 }
 
