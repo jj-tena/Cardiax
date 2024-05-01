@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useAuth } from 'context/AuthContext';
 
 const useLogin = () => {
+
+    const { login } = useAuth();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,12 +19,15 @@ const useLogin = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         console.log(`email: ${email} password: ${password}`);
+        login();
+        /**
         try {
             const response = await axios.post('/login', { email, password });
             console.log('Respuesta del servidor:', response.data);
         } catch (error) {
             console.error('Error al iniciar sesión:', error);
         }
+        */
     };
 
     return {email, setEmail, password, setPassword, isSubmitEnabled, handleInputChange, handleSubmit};

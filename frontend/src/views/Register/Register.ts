@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useAuth } from 'context/AuthContext';
 
 const useRegister = () => {
+
+    const { login } = useAuth();
 
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -13,18 +16,19 @@ const useRegister = () => {
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-
         if (password !== confirmPassword) {
             setError('Las contraseñas no coinciden');
             return;
         }
-
+        login();
+        /**
         try {
             const response = await axios.post('/register', { name, lastName, email, password });
             console.log('Respuesta del servidor:', response.data);
         } catch (error) {
             console.error('Error al registrar:', error);
         }
+        */
     };
 
     const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (event: React.ChangeEvent<HTMLInputElement>) => {

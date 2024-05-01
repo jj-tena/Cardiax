@@ -1,8 +1,9 @@
+import { useAuth } from 'context/AuthContext';
 import React, { useState } from 'react';
 
 const useHeader = () => {
 
-    const isAuthenticated = false;
+    const { isAuthenticated } = useAuth();
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
