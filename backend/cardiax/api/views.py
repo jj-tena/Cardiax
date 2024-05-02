@@ -16,6 +16,9 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password, check_password
 from rest_framework import status
 from .secrets import JWT_KEY
+from .ia import ia
+
+ia_instance = ia()
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -94,8 +97,8 @@ class AnalyticViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['post'])
     def add(self, request):
+
         token = request.META.get('HTTP_AUTHORIZATION')
-        print(f"Holaaa, {token}")
         if not token:
             return Response({'error': 'JWT token is missing'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -108,7 +111,8 @@ class AnalyticViewSet(viewsets.ModelViewSet):
                 return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
 
             request.data['user'] = user_id
-            request.data['heartDiseaseorAttack'] = 0
+            
+            request.data['heartDiseaseorAttack'] = ia_instance.predict(request)
             serializer = AnalyticSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()

@@ -32,7 +32,7 @@ const AnalyticCard: React.FC<{ analytic: AnalyticType }> = ({ analytic }) => {
                         <Typography variant="h6" id="transition-modal-title" gutterBottom>
                             Analítica {analytic.id}
                         </Typography>
-                        <Typography variant="body1" id="transition-modal-description">
+                        <Typography variant="body1" id="transition-modal-description" gutterBottom>
                             {(analytic.heartDiseaseorAttack == '0') ? 'Sin riesgo de infarto' : 'Con riesgo de infarto'}
                         </Typography>
                         <Typography variant="body1" id="transition-modal-title" gutterBottom>
