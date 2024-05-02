@@ -18,22 +18,17 @@ const AddAnalytic = () => {
         <Container>
             <Header/>
             <Box
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    minHeight: '85vh',
-                }}
+                sx={AddAnalyticStyles.main}
             >
                 <Container maxWidth="sm">
-                    <Box sx={{ textAlign: 'center', mt: 16, mb: 12 }}>
-                        <Typography variant="h4" gutterBottom sx={{mb: 4}}>
+                    <Box sx={AddAnalyticStyles.submain}>
+                        <Typography variant="h4" gutterBottom sx={AddAnalyticStyles.title}>
                             Añadir Analítica
                         </Typography>
-                        <Paper elevation={3} sx={{ p: 4 }}>
+                        <Paper elevation={3} sx={AddAnalyticStyles.content}>
                             <form onSubmit={handleSubmit}>
-                                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, margin: 'auto' }}>
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '30px' }}>
+                                <Box sx={AddAnalyticStyles.list}>
+                                    <Box sx={AddAnalyticStyles.question}>
                                         <Typography>
                                             ¿Padece hipertensión?
                                         </Typography>
@@ -42,7 +37,7 @@ const AddAnalytic = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Sí" />
                                         </RadioGroup>
                                     </Box>
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '30px' }}>
+                                    <Box sx={AddAnalyticStyles.question}>
                                         <Typography>
                                             ¿Tiene colesterol alto?
                                         </Typography>
@@ -51,7 +46,7 @@ const AddAnalytic = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Sí" />
                                         </RadioGroup>
                                     </Box>
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '30px' }}>
+                                    <Box sx={AddAnalyticStyles.question}>
                                         <Typography>
                                             ¿Revisó de colesterol en los ultimos 5 años?
                                         </Typography>
@@ -70,7 +65,7 @@ const AddAnalytic = () => {
                                             min: 0
                                         }}
                                     />
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '30px' }}>
+                                    <Box sx={AddAnalyticStyles.question}>
                                         <Typography>
                                             ¿Es fumador?
                                         </Typography>
@@ -79,7 +74,7 @@ const AddAnalytic = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Sí" />
                                         </RadioGroup>
                                     </Box>
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '30px' }}>
+                                    <Box sx={AddAnalyticStyles.question}>
                                         <Typography>
                                             ¿Ha sufrido algún infarto?
                                         </Typography>
@@ -88,7 +83,7 @@ const AddAnalytic = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Sí" />
                                         </RadioGroup>
                                     </Box>
-                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                    <Box sx={AddAnalyticStyles.select}>
                                         <Typography variant="body1">¿Padece de diabetes?</Typography>
                                         <Select
                                             value={diabetes}
@@ -101,7 +96,7 @@ const AddAnalytic = () => {
                                             <MenuItem value="3">Tengo diabetes</MenuItem>
                                         </Select>
                                     </Box>
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '30px' }}>
+                                    <Box sx={AddAnalyticStyles.question}>
                                         <Typography>
                                             ¿Realiza actividad física regularmente?
                                         </Typography>
@@ -110,7 +105,7 @@ const AddAnalytic = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Sí" />
                                         </RadioGroup>
                                     </Box>
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '30px' }}>
+                                    <Box sx={AddAnalyticStyles.question}>
                                         <Typography>
                                             ¿Consume al menos una fruta al día?
                                         </Typography>
@@ -119,7 +114,7 @@ const AddAnalytic = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Sí" />
                                         </RadioGroup>
                                     </Box>
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '30px' }}>
+                                    <Box sx={AddAnalyticStyles.question}>
                                         <Typography>
                                             ¿Consume al menos una verdura al día?
                                         </Typography>
@@ -128,7 +123,7 @@ const AddAnalytic = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Sí" />
                                         </RadioGroup>
                                     </Box>
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '30px' }}>
+                                    <Box sx={AddAnalyticStyles.question}>
                                         <Typography>
                                             ¿14 o más bebidas alcohólicas a la semana?
                                         </Typography>
@@ -137,7 +132,7 @@ const AddAnalytic = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Sí" />
                                         </RadioGroup>
                                     </Box>
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '30px' }}>
+                                    <Box sx={AddAnalyticStyles.question}>
                                         <Typography>
                                             ¿Tiene algún seguro de salud?
                                         </Typography>
@@ -146,7 +141,7 @@ const AddAnalytic = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Sí" />
                                         </RadioGroup>
                                     </Box>
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '30px' }}>
+                                    <Box sx={AddAnalyticStyles.question}>
                                         <Typography>
                                             ¿No pudo permitirse ir al médico este año?
                                         </Typography>
@@ -155,7 +150,7 @@ const AddAnalytic = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Sí" />
                                         </RadioGroup>
                                     </Box>
-                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                    <Box sx={AddAnalyticStyles.select}>
                                         <Typography variant="body1">Evalúe su salud general:</Typography>
                                         <Select
                                             value={genHlth}
@@ -169,7 +164,7 @@ const AddAnalytic = () => {
                                             <MenuItem value="4">Excelente</MenuItem>
                                         </Select>
                                     </Box>
-                                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                                    <Box sx={AddAnalyticStyles.lastDays}>
                                         <Typography variant="body1">En los últimos 30 días, cuantos días hace desde que padeció:</Typography>
                                         <TextField
                                             label="Un problema de salud mental"
@@ -194,7 +189,7 @@ const AddAnalytic = () => {
                                             }}
                                         />
                                     </Box>
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '30px' }}>
+                                    <Box sx={AddAnalyticStyles.question}>
                                         <Typography>
                                             ¿Dificultad para caminar o subir escaleras?
                                         </Typography>
@@ -203,7 +198,7 @@ const AddAnalytic = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Sí" />
                                         </RadioGroup>
                                     </Box>
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '30px' }}>
+                                    <Box sx={AddAnalyticStyles.question}>
                                         <Typography>
                                             Sexo
                                         </Typography>
@@ -212,7 +207,7 @@ const AddAnalytic = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Hombre" />
                                         </RadioGroup>
                                     </Box>
-                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                    <Box sx={AddAnalyticStyles.select}>
                                         <Typography variant="body1">Edad:</Typography>
                                         <Select
                                             value={age}
@@ -234,7 +229,7 @@ const AddAnalytic = () => {
                                             <MenuItem value="12">80 o más</MenuItem>
                                         </Select>
                                     </Box>
-                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                    <Box sx={AddAnalyticStyles.select}>
                                         <Typography variant="body1">Nivel educativo:</Typography>
                                         <Select
                                             value={education}
@@ -250,7 +245,7 @@ const AddAnalytic = () => {
                                             <MenuItem value="6">Máster o doctorado</MenuItem>
                                         </Select>
                                     </Box>
-                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                    <Box sx={AddAnalyticStyles.select}>
                                         <Typography variant="body1">Salario anual:</Typography>
                                         <Select
                                             value={income}

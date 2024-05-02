@@ -13,20 +13,16 @@ const Register = () => {
         <Container>
             <Header/>
             <Box
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    minHeight: '95vh',
-                }}
+                sx={RegisterStyles.main}
             >
                 <Container maxWidth="sm">
-                    <Box sx={{ textAlign: 'center', mt: 4, mb: 3 }}>
-                        <Typography variant="h4" gutterBottom sx={{mb: 4}}>
+                    <Box sx={RegisterStyles.submain}>
+                        <Typography variant="h4" gutterBottom sx={RegisterStyles.title}>
                             Registrarse
                         </Typography>
-                        <Paper elevation={3} sx={{ p: 4 }}>
+                        <Paper elevation={3} sx={RegisterStyles.content}>
                             <form onSubmit={handleSubmit}>
-                                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                                <Box sx={RegisterStyles.form}>
                                     <TextField
                                         label="Nombre"
                                         type="text"

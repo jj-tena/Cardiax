@@ -13,21 +13,17 @@ const Analytics = () => {
         <Container>
             <Header/>
             <Box
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    minHeight: '95vh',
-                }}
+                sx={AnalyticsStyles.main}
             >
                 <Container maxWidth="sm">
-                    <Box sx={{ textAlign: 'center', mt: 4, mb: 3 }}>
-                        <Typography variant="h4" gutterBottom sx={{mb: 6}}>
+                    <Box sx={AnalyticsStyles.submain}>
+                        <Typography variant="h4" gutterBottom sx={AnalyticsStyles.title}>
                             Listado de Analíticas
                         </Typography>
-                        <Box mt={4}>
+                        <Box sx={AnalyticsStyles.content}>
                             {analytics.length === 0 ? (
                                 <Box>
-                                    <Typography sx={{mb: 2}} variant="h5">No hay ninguna analítica en su historial.</Typography>
+                                    <Typography sx={AnalyticsStyles.noContent} variant="h5">No hay ninguna analítica en su historial.</Typography>
                                     <Typography variant="h5">Puedes empezar a subir sus analíticas en la sección "Añadir analítica".</Typography>
                                 </Box>
                             ) : (

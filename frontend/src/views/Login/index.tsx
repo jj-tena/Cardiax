@@ -11,33 +11,29 @@ const Login = () => {
         <Container>
             <Header/>
             <Box
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center', 
-                    minHeight: '85vh',
-                }}
+                sx={LoginStyles.main}
             >
                 <Container maxWidth="sm">
-                    <Box sx={{ textAlign: 'center', mt: 4 }}>
-                        <Typography variant="h4" gutterBottom sx={{mb: 4}}>
+                    <Box sx={LoginStyles.submain}>
+                        <Typography variant="h4" gutterBottom sx={LoginStyles.title}>
                             Iniciar sesión
                         </Typography>
-                        <Paper elevation={3} sx={{ p: 4 }}>
+                        <Paper elevation={3} sx={LoginStyles.content}>
                             <form onSubmit={handleSubmit}>
-                                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                                <Box sx={LoginStyles.form}>
                                     <TextField
                                         label="Correo electrónico"
                                         type="email"
                                         required
                                         value={email}
-                                        onChange={handleInputChange(setEmail)} // Manejar cambios en el campo de correo electrónico
+                                        onChange={handleInputChange(setEmail)}
                                     />
                                     <TextField
                                         label="Contraseña"
                                         type="password"
                                         required
                                         value={password}
-                                        onChange={handleInputChange(setPassword)} // Manejar cambios en el campo de contraseña
+                                        onChange={handleInputChange(setPassword)}
                                     />
                                     <Button type="submit" variant="contained" color="primary" disabled={!isSubmitEnabled}>
                                         Iniciar sesión

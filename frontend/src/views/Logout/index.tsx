@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Typography, Box, Button, Paper } from '@mui/material';
 import Header from "components/Header";
-import LoginStyles from "./Logout.styles";
 import useLogout from "./Logout";
+import LogoutStyles from './Logout.styles';
 
 const Logout = () => {
 
@@ -12,19 +12,15 @@ const Logout = () => {
         <Container>
             <Header/>
             <Box
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    minHeight: '85vh',
-                }}
+                sx={LogoutStyles.main}
             >
                 <Container maxWidth="sm">
-                    <Box sx={{ textAlign: 'center', mt: 4 }}>
-                        <Typography variant="h4" gutterBottom sx={{mb: 4}}>
+                    <Box sx={LogoutStyles.submain}>
+                        <Typography variant="h4" gutterBottom sx={LogoutStyles.title}>
                             Cerrar sesión
                         </Typography>
-                        <Paper elevation={3} sx={{ p: 4 }}>
-                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                        <Paper elevation={3} sx={LogoutStyles.content}>
+                            <Box sx={LogoutStyles.subcontent}>
                                 <Typography variant="body1">
                                     ¿Estás seguro de que deseas cerrar sesión?
                                 </Typography>

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, CardContent, Typography, Modal, Box, Fade, Backdrop } from '@mui/material';
+import { Card, CardContent, Typography, Modal, Box, Fade } from '@mui/material';
 import { AnalyticType } from 'types/AnalyticType';
 import useAnalyticCard from './AnalyticCard';
+import AnalyticCardStyles from './AnalyticCard.styles';
 
 const AnalyticCard: React.FC<{ analytic: AnalyticType }> = ({ analytic }) => {
 
@@ -27,7 +28,7 @@ const AnalyticCard: React.FC<{ analytic: AnalyticType }> = ({ analytic }) => {
                 closeAfterTransition
             >
                 <Fade in={open}>
-                    <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 400, bgcolor: 'background.paper', boxShadow: 24, p: 4 }}>
+                    <Box sx={AnalyticCardStyles.main}>
                         <Typography variant="h6" id="transition-modal-title" gutterBottom>
                             Analítica {analytic.id}
                         </Typography>

@@ -9,41 +9,41 @@ const Header = () => {
     const {isAuthenticated, anchorEl, handleMenuOpen, handleMenuClose} = useHeader();
 
     return (
-        <AppBar position="fixed" sx={{ width: '100%', top: 0, bgcolor: 'black', marginBottom: '350px' }}>
+        <AppBar position="fixed" sx={HeaderStyles.main}>
             <Toolbar>
-                <Typography variant="h4" sx={{ flexGrow: 1}}>
-                    <a href="/" style={{ textDecoration: 'none', display: 'block', color: 'white'}}>Cardiax</a>
+                <Typography variant="h4" sx={HeaderStyles.title}>
+                    <a href="/" style={HeaderStyles.titleLink}>Cardiax</a>
                 </Typography>
         
-                <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
+                <Box sx={HeaderStyles.options}>
                     {isAuthenticated ? (
                         <>
                             <Typography variant="h6">
-                                <a href="/add-analytic" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'white', display: 'block', padding: '8px 16px' }}>Añadir analítica</a>
+                                <a href="/add-analytic" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticated}>Añadir analítica</a>
                             </Typography>
                             <Typography variant="h6">
-                                <a href="/analytics" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'white', display: 'block', padding: '8px 16px' }}>Ver analíticas</a>
+                                <a href="/analytics" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticated}>Ver analíticas</a>
                             </Typography>
                             <Typography variant="h6">
-                                <a href="/evolution" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'white', display: 'block', padding: '8px 16px' }}>Evolución</a>
+                                <a href="/evolution" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticated}>Evolución</a>
                             </Typography>
                             <Typography variant="h6">
-                                <a href="/logout" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'white', display: 'block', padding: '8px 16px' }}>Logout</a>
+                                <a href="/logout" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticated}>Logout</a>
                             </Typography>
                         </>
                     ) : (
                         <>
-                            <Typography variant="h6" sx={{ mr: 4 }}>
-                                <a href="/login" style={{ textDecoration: 'none', color: 'white' }}>Login</a>
+                            <Typography variant="h6" sx={HeaderStyles.optionsNoAuthenticatedSeparation}>
+                                <a href="/login" style={HeaderStyles.optionsNoAuthenticated}>Login</a>
                             </Typography>
                             <Typography variant="h6">
-                                <a href="/register" style={{ textDecoration: 'none', color: 'white' }}>Registrarse</a>
+                                <a href="/register" style={HeaderStyles.optionsNoAuthenticated}>Registrarse</a>
                             </Typography>
                         </>
                     )}
                 </Box>
         
-                <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
+                <Box sx={{ display: HeaderStyles.optionsMobile }}>
                     <IconButton size="large" color="inherit" onClick={handleMenuOpen}>
                         <MenuIcon />
                     </IconButton>
@@ -55,25 +55,25 @@ const Header = () => {
                         {isAuthenticated ? (
                         <>
                             <Typography variant="h6">
-                                <a href="/add-analytic" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'black', display: 'block', padding: '8px 16px' }}>Añadir analítica</a>
+                                <a href="/add-analytic" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticatedMobile}>Añadir analítica</a>
                             </Typography>
                             <Typography variant="h6">
-                                <a href="/analytics" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'black', display: 'block', padding: '8px 16px' }}>Ver analíticas</a>
+                                <a href="/analytics" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticatedMobile}>Ver analíticas</a>
                             </Typography>
                             <Typography variant="h6">
-                                <a href="/evolution" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'black', display: 'block', padding: '8px 16px' }}>Evolución</a>
+                                <a href="/evolution" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticatedMobile}>Evolución</a>
                             </Typography>
                             <Typography variant="h6">
-                                <a href="/logout" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'black', display: 'block', padding: '8px 16px' }}>Logout</a>
+                                <a href="/logout" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticatedMobile}>Logout</a>
                             </Typography>
                         </>
                         ) : (
                         <>
                             <Typography variant="h6">
-                                <a href="/login" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'black', display: 'block', padding: '8px 16px' }}>Login</a>
+                                <a href="/login" onClick={handleMenuClose} style={HeaderStyles.optionsNoAuthenticatedMobile}>Login</a>
                             </Typography>
                             <Typography variant="h6">
-                                <a href="/register" onClick={handleMenuClose} style={{ textDecoration: 'none', color: 'black', display: 'block', padding: '8px 16px' }}>Registrarse</a>
+                                <a href="/register" onClick={handleMenuClose} style={HeaderStyles.optionsNoAuthenticatedMobile}>Registrarse</a>
                             </Typography>
                         </>
                         )}
