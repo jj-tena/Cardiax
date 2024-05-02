@@ -13,12 +13,12 @@ const Register = () => {
         <Container>
             <Header/>
             <Box
-            sx={{
-                display: 'flex',
-                alignItems: 'center',
-                minHeight: '95vh',
-            }}
-        >
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    minHeight: '95vh',
+                }}
+            >
                 <Container maxWidth="sm">
                     <Box sx={{ textAlign: 'center', mt: 4, mb: 3 }}>
                         <Typography variant="h4" gutterBottom sx={{mb: 4}}>
