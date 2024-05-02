@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useAuth } from 'context/AuthContext';
+import { useHistory } from 'react-router-dom';
 
 const useAddAnalytic = () => {
+
+    const { jwt } = useAuth();
+
+    const history = useHistory();
 
     const [highBP, setHighBP] = useState('');
     const [highChol, setHighChol] = useState('');
@@ -28,7 +34,7 @@ const useAddAnalytic = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
-            const response = await axios.post('/add-analytic', { 
+            const response = await axios.post('http://127.0.0.1:8000/api/analytics/add/', { 
                 highBP, 
                 highChol, 
                 cholCheck, 
@@ -50,8 +56,15 @@ const useAddAnalytic = () => {
                 age, 
                 education, 
                 income 
+            }, 
+            { 
+                headers: {
+                    Authorization: jwt
+                }
             });
             console.log('Respuesta del servidor:', response.data);
+            history.push('/analytics');
+            window.location.reload();
         } catch (error) {
             console.error('Error al agregar análitica:', error);
         }

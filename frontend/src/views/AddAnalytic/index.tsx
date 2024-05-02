@@ -20,9 +20,9 @@ const AddAnalytic = () => {
             <Box
                 sx={{
                     display: 'flex',
-                    alignItems: 'center', // Centra verticalmente los elementos hijos
-                    justifyContent: 'center', // Centra horizontalmente los elementos hijos
-                    minHeight: '85vh', // Establece el alto mínimo como el 100% de la altura de la ventana
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minHeight: '85vh',
                 }}
             >
                 <Container maxWidth="sm">
@@ -130,7 +130,7 @@ const AddAnalytic = () => {
                                     </Box>
                                     <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '30px' }}>
                                         <Typography>
-                                            ¿Toma más de 14 bebidas alcohólicas a la semana?
+                                            ¿14 o más bebidas alcohólicas a la semana?
                                         </Typography>
                                         <RadioGroup row aria-label="hvyAlcoholConsump" name="hvyAlcoholConsump" value={hvyAlcoholConsump} onChange={(e) => setHvyAlcoholConsump(e.target.value)}>
                                             <FormControlLabel value="0" control={<Radio />} label="No" />

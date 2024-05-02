@@ -92,4 +92,34 @@ class AnalyticViewSet(viewsets.ModelViewSet):
     queryset = Analytic.objects.all()
     serializer_class = AnalyticSerializer
 
+    @action(detail=False, methods=['post'])
+    def add(self, request):
+        token = request.META.get('HTTP_AUTHORIZATION')
+        print(f"Holaaa, {token}")
+        if not token:
+            return Response({'error': 'JWT token is missing'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            decoded_token = jwt.decode(token, JWT_KEY, algorithms=['HS256'])
+            user_id = decoded_token.get('user_id')
+
+            user = User.objects.filter(id=user_id).first()
+            if not user:
+                return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+
+            request.data['user'] = user_id
+            request.data['heartDiseaseorAttack'] = 0
+            serializer = AnalyticSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        except jwt.ExpiredSignatureError:
+            return Response({'error': 'JWT token has expired'}, status=status.HTTP_401_UNAUTHORIZED)
+        except jwt.InvalidTokenError:
+            return Response({'error': 'Invalid JWT token'}, status=status.HTTP_401_UNAUTHORIZED)
+    
+
     
