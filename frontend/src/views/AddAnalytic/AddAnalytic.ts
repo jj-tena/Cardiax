@@ -30,6 +30,7 @@ const useAddAnalytic = () => {
     const [age, setAge] = useState('');
     const [education, setEducation] = useState('');
     const [income, setIncome] = useState('');
+    const [timestamp, setTimestamp] = useState<string>('');
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -55,7 +56,8 @@ const useAddAnalytic = () => {
                 sex, 
                 age, 
                 education, 
-                income 
+                income,
+                timestamp
             }, 
             { 
                 headers: {
@@ -75,7 +77,7 @@ const useAddAnalytic = () => {
         fruits, setFruits, veggies, setVeggies, hvyAlcoholConsump, setHvyAlcoholConsump, 
         anyHealthcare, setAnyHealthcare, noDocbcCost, setNoDocbcCost, genHlth, setGenHlth,
         menthlth, setMenthlth, physHlth, setPhysHlth, diffWalk, setDiffWalk, sex, setSex,
-        age, setAge, education, setEducation, income, setIncome, handleSubmit
+        age, setAge, education, setEducation, income, setIncome, timestamp, setTimestamp, handleSubmit
     };
 }
 

@@ -1,3 +1,4 @@
+from operator import attrgetter
 from rest_framework import viewsets
 from cardiax.models import User, Analytic
 from cardiax.api.serializer import UserSerializer, AnalyticSerializer
@@ -80,9 +81,36 @@ class UserViewSet(viewsets.ModelViewSet):
             if not user:
                 return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
 
-            analytics = user.analytics_list()
+            analytics = user.analytics.all()
             
             serializer = AnalyticSerializer(analytics, many=True)
+
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        except jwt.ExpiredSignatureError:
+            return Response({'error': 'JWT token has expired'}, status=status.HTTP_401_UNAUTHORIZED)
+        except jwt.InvalidTokenError:
+            return Response({'error': 'Invalid JWT token'}, status=status.HTTP_401_UNAUTHORIZED)
+        
+    @action(detail=False, methods=['get'])
+    def evolution(self, request):
+        token = request.META.get('HTTP_AUTHORIZATION')
+        if not token:
+            return Response({'error': 'JWT token is missing'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            decoded_token = jwt.decode(token, JWT_KEY, algorithms=['HS256'])
+            user_id = decoded_token.get('user_id')
+
+            user = User.objects.filter(id=user_id).first()
+            if not user:
+                return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+
+            analytics = user.analytics_list()
+
+            sorted_analytics = sorted(analytics, key=attrgetter('timestamp'))
+
+            serializer = AnalyticSerializer(sorted_analytics, many=True)
 
             return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -111,7 +139,7 @@ class AnalyticViewSet(viewsets.ModelViewSet):
                 return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
 
             request.data['user'] = user_id
-            
+
             request.data['heartDiseaseorAttack'] = ia_instance.predict(request)
             serializer = AnalyticSerializer(data=request.data)
             if serializer.is_valid():

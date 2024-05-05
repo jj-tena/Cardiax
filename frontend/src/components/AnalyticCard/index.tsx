@@ -134,7 +134,9 @@ const AnalyticCard: React.FC<{ analytic: AnalyticType }> = ({ analytic }) => {
                             {(analytic.income == '5') ? '60001 - 75000' : ''}
                             {(analytic.income == '6') ? '75001 o más' : ''}
                         </Typography>
-
+                        <Typography variant="body1" id="transition-modal-title" gutterBottom>
+                            Fecha y hora: {analytic.timestamp}
+                        </Typography>
                     </Box>
                 </Fade>
             </Modal>

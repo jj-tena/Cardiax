@@ -33,3 +33,5 @@ class Analytic(models.Model):
     age = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(12)])
     education = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(6)])
     income = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
+    timestamp = models.DateTimeField()
+

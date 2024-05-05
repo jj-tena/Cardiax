@@ -1,4 +1,5 @@
 export type AnalyticType = {
+    timestamp: any;
     id: string;
     heartDiseaseorAttack: string;
     highBP: string;
@@ -23,3 +24,8 @@ export type AnalyticType = {
     education: string;
     income: string;
 };
+
+export type DataPoint = {
+    x: number;
+    y: number;
+}

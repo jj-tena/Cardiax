@@ -11,7 +11,7 @@ const AddAnalytic = () => {
         fruits, setFruits, veggies, setVeggies, hvyAlcoholConsump, setHvyAlcoholConsump, 
         anyHealthcare, setAnyHealthcare, noDocbcCost, setNoDocbcCost, genHlth, setGenHlth,
         menthlth, setMenthlth, physHlth, setPhysHlth, diffWalk, setDiffWalk, sex, setSex,
-        age, setAge, education, setEducation, income, setIncome, handleSubmit
+        age, setAge, education, setEducation, income, setIncome, timestamp, setTimestamp, handleSubmit
     } = useAddAnalytic();
 
     return (
@@ -259,6 +259,19 @@ const AddAnalytic = () => {
                                             <MenuItem value="4">60001 - 75000</MenuItem>
                                             <MenuItem value="5">75001 o más</MenuItem>
                                         </Select>
+                                    </Box>
+                                    <Box sx={AddAnalyticStyles.question}>
+                                        <TextField
+                                            id="timestamp"
+                                            label="Fecha y Hora"
+                                            type="datetime-local"
+                                            value={timestamp}
+                                            onChange={(e) => setTimestamp(e.target.value)}
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                            required
+                                        />
                                     </Box>
                                     <Button type="submit" variant="contained" color="primary">
                                         Añadir Analítica
