@@ -15,33 +15,30 @@ const Header = () => {
                     <a href="/" style={HeaderStyles.titleLink}>Cardiax</a>
                 </Typography>
         
-                <Box sx={HeaderStyles.options}>
-                    {isAuthenticated ? (
-                        <>
-                            <Typography variant="h6">
-                                <a href="/add-analytic" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticated}>Añadir analítica</a>
-                            </Typography>
-                            <Typography variant="h6">
-                                <a href="/analytics" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticated}>Ver analíticas</a>
-                            </Typography>
-                            <Typography variant="h6">
-                                <a href="/evolution" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticated}>Evolución</a>
-                            </Typography>
-                            <Typography variant="h6">
-                                <a href="/logout" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticated}>Logout</a>
-                            </Typography>
-                        </>
-                    ) : (
-                        <>
-                            <Typography variant="h6" sx={HeaderStyles.optionsNoAuthenticatedSeparation}>
-                                <a href="/login" style={HeaderStyles.optionsNoAuthenticated}>Login</a>
-                            </Typography>
-                            <Typography variant="h6">
-                                <a href="/register" style={HeaderStyles.optionsNoAuthenticated}>Registrarse</a>
-                            </Typography>
-                        </>
-                    )}
-                </Box>
+                {isAuthenticated ? (
+                    <Box sx={HeaderStyles.options}>
+                        <Typography variant="h6">
+                            <a href="/add-analytic" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticated}>Añadir analítica</a>                            </Typography>
+                        <Typography variant="h6">
+                            <a href="/analytics" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticated}>Ver analíticas</a>
+                        </Typography>
+                        <Typography variant="h6">
+                            <a href="/evolution" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticated}>Evolución</a>
+                        </Typography>
+                        <Typography variant="h6">
+                            <a href="/logout" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticated}>Logout</a>
+                        </Typography>
+                    </ Box>
+                ) : (
+                    <Box sx={HeaderStyles.options}>
+                        <Typography variant="h6" sx={HeaderStyles.optionsNoAuthenticatedSeparation}>
+                            <a href="/login" style={HeaderStyles.optionsNoAuthenticated}>Login</a>
+                        </Typography>
+                        <Typography variant="h6">
+                            <a href="/register" style={HeaderStyles.optionsNoAuthenticated}>Registrarse</a>
+                        </Typography>
+                    </ Box>
+                )}
         
                 <Box sx={{ display: HeaderStyles.optionsMobile }}>
                     <IconButton size="large" color="inherit" onClick={handleMenuOpen}>
@@ -52,8 +49,8 @@ const Header = () => {
                         open={Boolean(anchorEl)}
                         onClose={handleMenuClose}
                     >
-                        {isAuthenticated ? (
-                        <>
+                    {isAuthenticated ? (
+                        <Box>
                             <Typography variant="h6">
                                 <a href="/add-analytic" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticatedMobile}>Añadir analítica</a>
                             </Typography>
@@ -66,16 +63,16 @@ const Header = () => {
                             <Typography variant="h6">
                                 <a href="/logout" onClick={handleMenuClose} style={HeaderStyles.optionsAuthenticatedMobile}>Logout</a>
                             </Typography>
-                        </>
+                        </ Box>
                         ) : (
-                        <>
+                        < Box>
                             <Typography variant="h6">
                                 <a href="/login" onClick={handleMenuClose} style={HeaderStyles.optionsNoAuthenticatedMobile}>Login</a>
                             </Typography>
                             <Typography variant="h6">
                                 <a href="/register" onClick={handleMenuClose} style={HeaderStyles.optionsNoAuthenticatedMobile}>Registrarse</a>
                             </Typography>
-                        </>
+                        </ Box>
                         )}
                     </Menu>
                 </Box>

@@ -69,5 +69,4 @@ class ia():
     def predict(self, request):
         sample_df = self.transformData(request)
         predict = int(self.model.predict(sample_df)[0])
-        print(predict)
         return predict
