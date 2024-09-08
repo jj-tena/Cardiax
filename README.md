@@ -31,6 +31,7 @@ To run the project locally, open a terminal in the backend folder and execute th
 * python3 manage.py makemigrations: Creates a migration file with the project’s code files.
 * python3 manage.py migrate: Deploys the migration file in the virtual environment.
 * python manage.py runserver: Runs a local server with the project on port 8000 (To access: http://localhost:8000).
+
 Django https://www.djangoproject.com was primarily chosen as the framework to develop the platform's backend because of its native compatibility with Python, allowing direct integration of the AI model developed in the previous section using this language.
 Specifically, Django Rest Framework https://www.django-rest-framework.org was used, which is an extension of Django that facilitates the creation of RESTful API architectures. It allows the definition of API endpoints to expose the AI model's predictive capabilities and other operations such as user authentication, making them easily consumable by the frontend, which will be discussed more specifically in the Communication section.
 Additionally, Django provides its own Object-Relational Mapping (ORM) to interact with databases, a key point when implementing information persistence. These aspects will be detailed further in the Database section.
@@ -82,6 +83,7 @@ Due to the difficulty in obtaining original data samples because of their privat
 * [DS4] Framingham Heart Study Dataset: A dataset with 15 features and 4240 samples that allows predicting the absence (0) or presence (1) of the risk of developing coronary heart disease within 10 years. The Framingham study began in 1948 under the U.S. Public Health Service and was transferred to the National Heart Institute in 1949. It involved men and women from the town of Framingham in Massachusetts.
 * [DS5] Heart Disease Health Indicators Dataset: A dataset with 21 features and 253680 samples that allows predicting the absence (0) or presence (1) of heart disease. The Behavioral Risk Factor Surveillance System (BRFSS) is a telephone survey that collects responses from over 400,000 Americans each year on health-related aspects. This dataset is a processed sample from the 2015 edition.
 * [DS6] Cardiovascular Diseases Risk Prediction Dataset: A dataset with 18 features and 308854 samples that allows predicting the absence (0) or presence (1) of heart disease. Similarly to the previous dataset, this one comes from the BRFSS survey but is from the 2021 edition.
+
 All these datasets were uploaded to Google Drive in a public repository so that they could be downloaded directly from the notebook without needing to keep local copies. This way, all the information became available in the code execution environment, after which it was transformed into a tabular DataFrame structure using the Pandas library.
 
 ### Exploratory data analysis
@@ -104,6 +106,7 @@ Outlier Detection and Removal is a process where unusual or extreme observations
 Given the focus on using unsupervised learning techniques in this work, two such algorithms will be used for outlier detection, which will identify potential anomalies without the need for training on labeled samples. The algorithms to be used are:
 * Local Outlier Factor (LOF): Based on the idea that outliers have a significantly lower local density compared to their neighbors. LOF calculates an outlier factor for each instance based on the local density of its neighbors; if a point has a high LOF factor, it means it is less densely surrounded than most points. Outliers are identified as those points with an LOF factor significantly greater than 1.
 * Isolation Forest: Based on the use of decision trees, it differs from the previous method in that it does not assume that outliers are necessarily in low-density areas. The algorithm builds multiple decision trees randomly, each tree recursively splits the feature space into subsets, randomly selecting a feature and a split value for each division. Outliers are identified more quickly during the tree construction process, as they require fewer splits to be isolated. Anomaly scores are calculated based on the average depth of the nodes where the data points are located; outliers will have lower anomaly scores.
+
 After running both algorithms, the number of outliers detected by each will be recorded, and those detected by both will be removed.
 Handling or Imputing Missing Values is a process used in data analysis to address observations with absent values. When missing values are found in a dataset, they must be addressed to avoid negatively affecting the training and evaluation of the model.
 Standardization of Numeric Variables aims to transform numeric variables so that they have a mean of zero and a standard deviation of one. This means that the values of the transformed variables will be centered around zero and have similar dispersion, which facilitates comparison and analysis of the variables. Standardization is useful when variables have different scales and units of measurement, as it helps prevent variables with larger magnitudes from dominating the model's contribution.
@@ -120,30 +123,33 @@ After familiarizing oneself with the data, the next objective was to train the p
 * K-Nearest Neighbors (KNN): This classifier assigns a label to a data point based on the majority labels of its k nearest neighbors. It is a simple and versatile supervised learning algorithm that works well with datasets with non-linear structures and when locality in the data distribution is important. However, it can be computationally expensive for large datasets and may require proper normalization of the data to function correctly.
 * Support Vector Classifier (SVC): SVC is a supervised learning algorithm that finds the optimal hyperplane that maximizes the margin between classes in the feature space. It is useful for binary classification problems and linearly separable data, but can also be used for non-linear classification and regression problems using kernels. SVM is robust to high-dimensional datasets and effective even with a small number of samples.
 * XGBoost: XGBoost is a supervised learning algorithm based on decision trees that uses boosting techniques to improve predictive performance. It is highly effective for classification and regression problems and is known for its speed and performance with large and complex datasets. XGBoost also offers flexibility in hyperparameter tuning to optimize model performance.
+
 For each algorithm, the GridSearchCV technique will be used to obtain the best hyperparameters according to the dataset being used. The following explains the hyperparameters that will be used for each algorithm:
 * DT:
-** criterion: Gini and Entropy are the criteria for measuring the quality of a split. Gini measures impurity, while Entropy measures the disorder of information.
-** max_depth: Controls the maximum depth of the tree to avoid overfitting. None allows the tree to grow without restrictions, while values like 10, 20, and 30 limit its growth.
+ * criterion: Gini and Entropy are the criteria for measuring the quality of a split. Gini measures impurity, while Entropy measures the disorder of information.
+ * max_depth: Controls the maximum depth of the tree to avoid overfitting. None allows the tree to grow without restrictions, while values like 10, 20, and 30 limit its growth.
 * KNN:
-** n_neighbors: Number of neighbors to consider in classification. Testing values like 3, 5, and 7 helps find the balance between considering too few or too many neighbors.
-** weights: Uniform gives equal weight to all neighbors, while distance gives more weight to closer neighbors.
-** metric: Metric for measuring the distance between points. Euclidean and Manhattan are the options tested.
+ * n_neighbors: Number of neighbors to consider in classification. Testing values like 3, 5, and 7 helps find the balance between considering too few or too many neighbors.
+ * weights: Uniform gives equal weight to all neighbors, while distance gives more weight to closer neighbors.
+ * metric: Metric for measuring the distance between points. Euclidean and Manhattan are the options tested.
 * SVC:
-** C: Regularization parameter. A low C may cause underfitting, while a high C can lead to overfitting.
-** kernel: Linear and rbf are types of kernels that transform the data. Linear is a linear transformation, while rbf is a non-linear transformation based on radial functions.
-** gamma: Scale and auto are the options tested for the gamma coefficient in non-linear kernels.
+ * C: Regularization parameter. A low C may cause underfitting, while a high C can lead to overfitting.
+ * kernel: Linear and rbf are types of kernels that transform the data. Linear is a linear transformation, while rbf is a non-linear transformation based on radial functions.
+ * gamma: Scale and auto are the options tested for the gamma coefficient in non-linear kernels.
 * XGBoost:
-* n_estimators: Number of trees to be built in the model. Tested values: 50, 100, 200.
-* max_depth: Maximum depth of each tree. Tested values: 3, 6, 9.
-* learning_rate: Learning rate, which controls the contribution of each tree to the final model. Tested values: 0.01, 0.1, 0.2.
-* subsample: Proportion of samples used to train each tree. Tested values: 0.8, 1.0.
-* colsample_bytree: Proportion of features used to train each tree. Tested values: 0.8, 1.0.
+ * n_estimators: Number of trees to be built in the model. Tested values: 50, 100, 200.
+ * max_depth: Maximum depth of each tree. Tested values: 3, 6, 9.
+ * learning_rate: Learning rate, which controls the contribution of each tree to the final model. Tested values: 0.01, 0.1, 0.2.
+ * subsample: Proportion of samples used to train each tree. Tested values: 0.8, 1.0.
+ * colsample_bytree: Proportion of features used to train each tree. Tested values: 0.8, 1.0.
+
 To evaluate different preprocessing options, the holdout method will be used, creating several partitions using the train-test algorithm. The dataset will be divided into 5 different partitions, controlling reproducibility with a seed. For each partition, GridSearchCV will be applied to perform hyperparameter tuning, using a pipeline that includes preprocessing and the supervised model.
 The model performance will be evaluated using multiple metrics to provide a more comprehensive view of the models' predictive capabilities:
 * Precision: Proportion of true positives among all instances classified as positive. High precision indicates that most of the model's positive predictions are correct.
 * Recall: Proportion of true positives among all instances that are actually positive. High recall indicates that the model can identify most of the positive instances.
 * F1-Score: The harmonic mean between precision and recall. It is especially useful in scenarios where the balance between precision and recall is crucial, such as in cases with imbalanced classes.
-* AUC-ROC (Area Under the ROC Curve): Measures the model's ability to distinguish between positive and negative classes. The ROC curve shows the relationship between the True Positive Rate (TPR) and the False * Positive Rate (FPR) at various classification thresholds. The area under the ROC curve (AUC) provides a single value that measures the model's ability to distinguish between classes. An AUC close to 1 indicates excellent performance.
+* AUC-ROC (Area Under the ROC Curve): Measures the model's ability to distinguish between positive and negative classes. The ROC curve shows the relationship between the True Positive Rate (TPR) and the False Positive Rate (FPR) at various classification thresholds. The area under the ROC curve (AUC) provides a single value that measures the model's ability to distinguish between classes. An AUC close to 1 indicates excellent performance.
+  
 For each trained model, the F1 score obtained in each partition will be recorded, along with the mean and standard deviation of these scores, as well as for the Precision, Recall, and AUC-ROC metrics. This process ensures that the results are consistent and that the model generalizes well to different subsets of data.
 The code also includes visualization of the confusion matrix and the ROC curve for each partition and each model, providing additional insights into the model's performance in classifying the classes.
 Finally, although all models will be evaluated, the model trained with XGBoost will always be selected as the final model due to its effectiveness for analysis with interpretability algorithms.
