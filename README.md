@@ -126,22 +126,22 @@ After familiarizing oneself with the data, the next objective was to train the p
 
 For each algorithm, the GridSearchCV technique will be used to obtain the best hyperparameters according to the dataset being used. The following explains the hyperparameters that will be used for each algorithm:
 * DT:
- * criterion: Gini and Entropy are the criteria for measuring the quality of a split. Gini measures impurity, while Entropy measures the disorder of information.
- * max_depth: Controls the maximum depth of the tree to avoid overfitting. None allows the tree to grow without restrictions, while values like 10, 20, and 30 limit its growth.
+  criterion: Gini and Entropy are the criteria for measuring the quality of a split. Gini measures impurity, while Entropy measures the disorder of information.
+  max_depth: Controls the maximum depth of the tree to avoid overfitting. None allows the tree to grow without restrictions, while values like 10, 20, and 30 limit its growth.
 * KNN:
- * n_neighbors: Number of neighbors to consider in classification. Testing values like 3, 5, and 7 helps find the balance between considering too few or too many neighbors.
- * weights: Uniform gives equal weight to all neighbors, while distance gives more weight to closer neighbors.
- * metric: Metric for measuring the distance between points. Euclidean and Manhattan are the options tested.
+  n_neighbors: Number of neighbors to consider in classification. Testing values like 3, 5, and 7 helps find the balance between considering too few or too many neighbors.
+  weights: Uniform gives equal weight to all neighbors, while distance gives more weight to closer neighbors.
+  metric: Metric for measuring the distance between points. Euclidean and Manhattan are the options tested.
 * SVC:
- * C: Regularization parameter. A low C may cause underfitting, while a high C can lead to overfitting.
- * kernel: Linear and rbf are types of kernels that transform the data. Linear is a linear transformation, while rbf is a non-linear transformation based on radial functions.
- * gamma: Scale and auto are the options tested for the gamma coefficient in non-linear kernels.
+  C: Regularization parameter. A low C may cause underfitting, while a high C can lead to overfitting.
+  kernel: Linear and rbf are types of kernels that transform the data. Linear is a linear transformation, while rbf is a non-linear transformation based on radial functions.
+  gamma: Scale and auto are the options tested for the gamma coefficient in non-linear kernels.
 * XGBoost:
- * n_estimators: Number of trees to be built in the model. Tested values: 50, 100, 200.
- * max_depth: Maximum depth of each tree. Tested values: 3, 6, 9.
- * learning_rate: Learning rate, which controls the contribution of each tree to the final model. Tested values: 0.01, 0.1, 0.2.
- * subsample: Proportion of samples used to train each tree. Tested values: 0.8, 1.0.
- * colsample_bytree: Proportion of features used to train each tree. Tested values: 0.8, 1.0.
+  n_estimators: Number of trees to be built in the model. Tested values: 50, 100, 200.
+  max_depth: Maximum depth of each tree. Tested values: 3, 6, 9.
+  learning_rate: Learning rate, which controls the contribution of each tree to the final model. Tested values: 0.01, 0.1, 0.2.
+  subsample: Proportion of samples used to train each tree. Tested values: 0.8, 1.0.
+  colsample_bytree: Proportion of features used to train each tree. Tested values: 0.8, 1.0.
 
 To evaluate different preprocessing options, the holdout method will be used, creating several partitions using the train-test algorithm. The dataset will be divided into 5 different partitions, controlling reproducibility with a seed. For each partition, GridSearchCV will be applied to perform hyperparameter tuning, using a pipeline that includes preprocessing and the supervised model.
 The model performance will be evaluated using multiple metrics to provide a more comprehensive view of the models' predictive capabilities:
