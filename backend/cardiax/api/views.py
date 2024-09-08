@@ -140,7 +140,8 @@ class AnalyticViewSet(viewsets.ModelViewSet):
 
             request.data['user'] = user_id
 
-            request.data['heartDiseaseorAttack'] = ia_instance.predict(request)
+            request.data['heartDisease'] = ia_instance.predict(request)
+
             serializer = AnalyticSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()

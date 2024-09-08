@@ -24,7 +24,7 @@ const useEvolution = () => {
             });
             const formattedData = response.data.map((analytic: AnalyticType) => ({
                 x: analytic.timestamp,
-                y: analytic.heartDiseaseorAttack
+                y: analytic.heartDisease
             }));
             setAnalytics(formattedData);
         } catch (error) {

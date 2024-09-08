@@ -6,12 +6,13 @@ import Header from "components/Header";
 
 const AddAnalytic = () => {
 
-    const {highBP, setHighBP, highChol, setHighChol, cholCheck, setCholCheck, imc, setImc,
-        smoker, setSmoker, stroke, setStroke, diabetes, setDiabetes, physActivity, setPhysActivity,
-        fruits, setFruits, veggies, setVeggies, hvyAlcoholConsump, setHvyAlcoholConsump, 
-        anyHealthcare, setAnyHealthcare, noDocbcCost, setNoDocbcCost, genHlth, setGenHlth,
-        menthlth, setMenthlth, physHlth, setPhysHlth, diffWalk, setDiffWalk, sex, setSex,
-        age, setAge, education, setEducation, income, setIncome, timestamp, setTimestamp, handleSubmit
+    const {sex, setSex, age, setAge, chestPainType, setChestPainType,
+        restingBloodPressure, setRestingBloodPressure, serumCholestoral, setSerumCholestoral,
+        fastingBloodSugar, setFastingBloodSugar, restingElectrocardiographicResults, 
+        setRestingElectrocardiographicResults, maximumHeartRateAchieved, setMaximumHeartRateAchieved,
+        exerciseInducedAngina, setExerciseInducedAngina, oldpeak, setOldpeak,
+        slopeOfThePeakExercise, setSlopeOfThePeakExercise, numberOfMajorVessels, setNumberOfMajorVessels,
+        thal, setThal, timestamp, setTimestamp, handleSubmit
     } = useAddAnalytic();
 
     return (
@@ -28,177 +29,7 @@ const AddAnalytic = () => {
                         <Paper elevation={3} sx={AddAnalyticStyles.content}>
                             <form onSubmit={handleSubmit}>
                                 <Box sx={AddAnalyticStyles.list}>
-                                    <Box sx={AddAnalyticStyles.question}>
-                                        <Typography>
-                                            ¿Padece hipertensión?
-                                        </Typography>
-                                        <RadioGroup row aria-label="highBP" name="highBP" value={highBP} onChange={(e) => setHighBP(e.target.value)}>
-                                            <FormControlLabel value="0" control={<Radio />} label="No" />
-                                            <FormControlLabel value="1" control={<Radio />} label="Sí" />
-                                        </RadioGroup>
-                                    </Box>
-                                    <Box sx={AddAnalyticStyles.question}>
-                                        <Typography>
-                                            ¿Tiene colesterol alto?
-                                        </Typography>
-                                        <RadioGroup row aria-label="highChol" name="highChol" value={highChol} onChange={(e) => setHighChol(e.target.value)}>
-                                            <FormControlLabel value="0" control={<Radio />} label="No" />
-                                            <FormControlLabel value="1" control={<Radio />} label="Sí" />
-                                        </RadioGroup>
-                                    </Box>
-                                    <Box sx={AddAnalyticStyles.question}>
-                                        <Typography>
-                                            ¿Revisó de colesterol en los ultimos 5 años?
-                                        </Typography>
-                                        <RadioGroup row aria-label="cholCheck" name="cholCheck" value={cholCheck} onChange={(e) => setCholCheck(e.target.value)}>
-                                            <FormControlLabel value="0" control={<Radio />} label="No" />
-                                            <FormControlLabel value="1" control={<Radio />} label="Sí" />
-                                        </RadioGroup>
-                                    </Box>
-                                    <TextField
-                                        label="Índice de masa corporal"
-                                        type="number"
-                                        required
-                                        value={imc}
-                                        onChange={(e) => setImc(e.target.value)}
-                                        inputProps={{
-                                            min: 0
-                                        }}
-                                    />
-                                    <Box sx={AddAnalyticStyles.question}>
-                                        <Typography>
-                                            ¿Es fumador?
-                                        </Typography>
-                                        <RadioGroup row aria-label="smoker" name="smoker" value={smoker} onChange={(e) => setSmoker(e.target.value)}>
-                                            <FormControlLabel value="0" control={<Radio />} label="No" />
-                                            <FormControlLabel value="1" control={<Radio />} label="Sí" />
-                                        </RadioGroup>
-                                    </Box>
-                                    <Box sx={AddAnalyticStyles.question}>
-                                        <Typography>
-                                            ¿Ha sufrido algún infarto?
-                                        </Typography>
-                                        <RadioGroup row aria-label="stroke" name="stroke" value={stroke} onChange={(e) => setStroke(e.target.value)}>
-                                            <FormControlLabel value="0" control={<Radio />} label="No" />
-                                            <FormControlLabel value="1" control={<Radio />} label="Sí" />
-                                        </RadioGroup>
-                                    </Box>
-                                    <Box sx={AddAnalyticStyles.select}>
-                                        <Typography variant="body1">¿Padece de diabetes?</Typography>
-                                        <Select
-                                            value={diabetes}
-                                            onChange={(e) => setDiabetes(e.target.value as string)}
-                                            required
-                                        >
-                                            <MenuItem value="0">No</MenuItem>
-                                            <MenuItem value="1">Tengo antecedentes familiares</MenuItem>
-                                            <MenuItem value="2">Tengo prediabetes</MenuItem>
-                                            <MenuItem value="3">Tengo diabetes</MenuItem>
-                                        </Select>
-                                    </Box>
-                                    <Box sx={AddAnalyticStyles.question}>
-                                        <Typography>
-                                            ¿Realiza actividad física regularmente?
-                                        </Typography>
-                                        <RadioGroup row aria-label="physActivity" name="physActivity" value={physActivity} onChange={(e) => setPhysActivity(e.target.value)}>
-                                            <FormControlLabel value="0" control={<Radio />} label="No" />
-                                            <FormControlLabel value="1" control={<Radio />} label="Sí" />
-                                        </RadioGroup>
-                                    </Box>
-                                    <Box sx={AddAnalyticStyles.question}>
-                                        <Typography>
-                                            ¿Consume al menos una fruta al día?
-                                        </Typography>
-                                        <RadioGroup row aria-label="fruits" name="fruits" value={fruits} onChange={(e) => setFruits(e.target.value)}>
-                                            <FormControlLabel value="0" control={<Radio />} label="No" />
-                                            <FormControlLabel value="1" control={<Radio />} label="Sí" />
-                                        </RadioGroup>
-                                    </Box>
-                                    <Box sx={AddAnalyticStyles.question}>
-                                        <Typography>
-                                            ¿Consume al menos una verdura al día?
-                                        </Typography>
-                                        <RadioGroup row aria-label="veggies" name="veggies" value={veggies} onChange={(e) => setVeggies(e.target.value)}>
-                                            <FormControlLabel value="0" control={<Radio />} label="No" />
-                                            <FormControlLabel value="1" control={<Radio />} label="Sí" />
-                                        </RadioGroup>
-                                    </Box>
-                                    <Box sx={AddAnalyticStyles.question}>
-                                        <Typography>
-                                            ¿14 o más bebidas alcohólicas a la semana?
-                                        </Typography>
-                                        <RadioGroup row aria-label="hvyAlcoholConsump" name="hvyAlcoholConsump" value={hvyAlcoholConsump} onChange={(e) => setHvyAlcoholConsump(e.target.value)}>
-                                            <FormControlLabel value="0" control={<Radio />} label="No" />
-                                            <FormControlLabel value="1" control={<Radio />} label="Sí" />
-                                        </RadioGroup>
-                                    </Box>
-                                    <Box sx={AddAnalyticStyles.question}>
-                                        <Typography>
-                                            ¿Tiene algún seguro de salud?
-                                        </Typography>
-                                        <RadioGroup row aria-label="anyHealthcare" name="anyHealthcare" value={anyHealthcare} onChange={(e) => setAnyHealthcare(e.target.value)}>
-                                            <FormControlLabel value="0" control={<Radio />} label="No" />
-                                            <FormControlLabel value="1" control={<Radio />} label="Sí" />
-                                        </RadioGroup>
-                                    </Box>
-                                    <Box sx={AddAnalyticStyles.question}>
-                                        <Typography>
-                                            ¿No pudo permitirse ir al médico este año?
-                                        </Typography>
-                                        <RadioGroup row aria-label="noDocbcCost" name="noDocbcCost" value={noDocbcCost} onChange={(e) => setNoDocbcCost(e.target.value)}>
-                                            <FormControlLabel value="0" control={<Radio />} label="No" />
-                                            <FormControlLabel value="1" control={<Radio />} label="Sí" />
-                                        </RadioGroup>
-                                    </Box>
-                                    <Box sx={AddAnalyticStyles.select}>
-                                        <Typography variant="body1">Evalúe su salud general:</Typography>
-                                        <Select
-                                            value={genHlth}
-                                            onChange={(e) => setGenHlth(e.target.value as string)}
-                                            required
-                                        >
-                                            <MenuItem value="0">Mala</MenuItem>
-                                            <MenuItem value="1">Regular</MenuItem>
-                                            <MenuItem value="2">Normal</MenuItem>
-                                            <MenuItem value="3">Buena</MenuItem>
-                                            <MenuItem value="4">Excelente</MenuItem>
-                                        </Select>
-                                    </Box>
-                                    <Box sx={AddAnalyticStyles.lastDays}>
-                                        <Typography variant="body1">En los últimos 30 días, cuantos días hace desde que padeció:</Typography>
-                                        <TextField
-                                            label="Un problema de salud mental"
-                                            type="number"
-                                            required
-                                            value={menthlth}
-                                            onChange={(e) => setMenthlth(e.target.value)}
-                                            inputProps={{
-                                                min: 0,
-                                                max: 30
-                                            }}
-                                        />
-                                        <TextField
-                                            label="Un problema de salud física"
-                                            type="number"
-                                            required
-                                            value={physHlth}
-                                            onChange={(e) => setPhysHlth(e.target.value)}
-                                            inputProps={{
-                                                min: 0,
-                                                max: 30
-                                            }}
-                                        />
-                                    </Box>
-                                    <Box sx={AddAnalyticStyles.question}>
-                                        <Typography>
-                                            ¿Dificultad para caminar o subir escaleras?
-                                        </Typography>
-                                        <RadioGroup row aria-label="diffWalk" name="diffWalk" value={diffWalk} onChange={(e) => setDiffWalk(e.target.value)}>
-                                            <FormControlLabel value="0" control={<Radio />} label="No" />
-                                            <FormControlLabel value="1" control={<Radio />} label="Sí" />
-                                        </RadioGroup>
-                                    </Box>
-                                    <Box sx={AddAnalyticStyles.question}>
+                                <Box sx={AddAnalyticStyles.question}>
                                         <Typography>
                                             Sexo
                                         </Typography>
@@ -207,59 +38,126 @@ const AddAnalytic = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Hombre" />
                                         </RadioGroup>
                                     </Box>
-                                    <Box sx={AddAnalyticStyles.select}>
-                                        <Typography variant="body1">Edad:</Typography>
-                                        <Select
-                                            value={age}
-                                            onChange={(e) => setAge(e.target.value as string)}
-                                            required
-                                        >
-                                            <MenuItem value="0">18 - 24</MenuItem>
-                                            <MenuItem value="1">25 - 29</MenuItem>
-                                            <MenuItem value="2">30- 34</MenuItem>
-                                            <MenuItem value="3">35 - 39</MenuItem>
-                                            <MenuItem value="4">40 - 44</MenuItem>
-                                            <MenuItem value="5">45 - 49</MenuItem>
-                                            <MenuItem value="6">50 - 54</MenuItem>
-                                            <MenuItem value="7">55 - 59</MenuItem>
-                                            <MenuItem value="8">60 - 64</MenuItem>
-                                            <MenuItem value="9">65 - 69</MenuItem>
-                                            <MenuItem value="10">70 - 74</MenuItem>
-                                            <MenuItem value="11">75 - 79</MenuItem>
-                                            <MenuItem value="12">80 o más</MenuItem>
-                                        </Select>
+                                    <TextField
+                                        label="Edad"
+                                        type="number"
+                                        required
+                                        value={age}
+                                        onChange={(e) => setAge(e.target.value)}
+                                        inputProps={{
+                                            min: 0
+                                        }}
+                                    />
+                                    <Box sx={AddAnalyticStyles.question}>
+                                        <Typography>
+                                            Tipo de dolor en el pecho
+                                        </Typography>
+                                        <RadioGroup row aria-label="chestPainType" name="chestPainType" value={chestPainType} onChange={(e) => setChestPainType(e.target.value)}>
+                                            <FormControlLabel value="1" control={<Radio />} label="Angina típica" />
+                                            <FormControlLabel value="2" control={<Radio />} label="Angina atípica" />
+                                            <FormControlLabel value="3" control={<Radio />} label="Dolor no anginoso" />
+                                            <FormControlLabel value="4" control={<Radio />} label="Asintomático" />
+                                        </RadioGroup>
                                     </Box>
-                                    <Box sx={AddAnalyticStyles.select}>
-                                        <Typography variant="body1">Nivel educativo:</Typography>
-                                        <Select
-                                            value={education}
-                                            onChange={(e) => setEducation(e.target.value as string)}
-                                            required
-                                        >
-                                            <MenuItem value="0">Guardería</MenuItem>
-                                            <MenuItem value="1">Infantil</MenuItem>
-                                            <MenuItem value="2">Primaria</MenuItem>
-                                            <MenuItem value="3">ESO</MenuItem>
-                                            <MenuItem value="4">Bachillerato</MenuItem>
-                                            <MenuItem value="5">Carrera universitaria</MenuItem>
-                                            <MenuItem value="6">Máster o doctorado</MenuItem>
-                                        </Select>
+                                    <TextField
+                                        label="Presión arterial en reposo (mmHg)"
+                                        type="number"
+                                        required
+                                        value={restingBloodPressure}
+                                        onChange={(e) => setRestingBloodPressure(e.target.value)}
+                                        inputProps={{
+                                            min: 0
+                                        }}
+                                    />
+                                    <TextField
+                                        label="Niveles de colesterol sérico (mg/dL)"
+                                        type="number"
+                                        required
+                                        value={serumCholestoral}
+                                        onChange={(e) => setSerumCholestoral(e.target.value)}
+                                        inputProps={{
+                                            min: 0
+                                        }}
+                                    />
+                                    <Box sx={AddAnalyticStyles.question}>
+                                        <Typography>
+                                            Nivel de azúcar en sangre en ayunas
+                                        </Typography>
+                                        <RadioGroup row aria-label="Nivel de azúcar en sangre en ayunas" name="fastingBloodSugar" value={fastingBloodSugar} onChange={(e) => setFastingBloodSugar(e.target.value)}>
+                                            <FormControlLabel value="0" control={<Radio />} label="Inferior a 120 mg/dL" />
+                                            <FormControlLabel value="1" control={<Radio />} label="Superior a 120 mg/dL" />
+                                        </RadioGroup>
                                     </Box>
-                                    <Box sx={AddAnalyticStyles.select}>
-                                        <Typography variant="body1">Salario anual:</Typography>
-                                        <Select
-                                            value={income}
-                                            onChange={(e) => setIncome(e.target.value as string)}
-                                            required
-                                        >
-                                            <MenuItem value="0">10000 - 20000</MenuItem>
-                                            <MenuItem value="1">20001 - 30000</MenuItem>
-                                            <MenuItem value="2">30001 - 40000</MenuItem>
-                                            <MenuItem value="3">50001 - 60000</MenuItem>
-                                            <MenuItem value="4">60001 - 75000</MenuItem>
-                                            <MenuItem value="5">75001 o más</MenuItem>
-                                        </Select>
+                                    <Box sx={AddAnalyticStyles.question}>
+                                        <Typography>
+                                            Electrocardiograma en reposo
+                                        </Typography>
+                                        <RadioGroup row aria-label="Electrocardiograma en reposo" name="restingElectrocardiographicResults" value={restingElectrocardiographicResults} onChange={(e) => setRestingElectrocardiographicResults(e.target.value)}>
+                                            <FormControlLabel value="0" control={<Radio />} label="Normal" />
+                                            <FormControlLabel value="1" control={<Radio />} label="Anomalía de onda ST-T" />
+                                            <FormControlLabel value="2" control={<Radio />} label="Hipertrofia ventricular izquierda" />
+                                        </RadioGroup>
                                     </Box>
+                                    <TextField
+                                        label="Frecuencia cardíaca máxima durante el ejercicio (bpm)"
+                                        type="number"
+                                        required
+                                        value={maximumHeartRateAchieved}
+                                        onChange={(e) => setMaximumHeartRateAchieved(e.target.value)}
+                                        inputProps={{
+                                            min: 0
+                                        }}
+                                    />
+                                    <Box sx={AddAnalyticStyles.question}>
+                                        <Typography>
+                                            Angina inducida por el ejercicio
+                                        </Typography>
+                                        <RadioGroup row aria-label="Angina inducida por el ejercicio" name="exerciseInducedAngina" value={exerciseInducedAngina} onChange={(e) => setExerciseInducedAngina(e.target.value)}>
+                                            <FormControlLabel value="0" control={<Radio />} label="No" />
+                                            <FormControlLabel value="1" control={<Radio />} label="Si" />
+                                        </RadioGroup>
+                                    </Box>
+                                    <TextField
+                                        label="Depresión ST medida en el electrocardiograma en reposo post ejercicio"
+                                        type="number"
+                                        required
+                                        value={oldpeak}
+                                        onChange={(e) => setOldpeak(e.target.value)}
+                                        inputProps={{
+                                            min: 0
+                                        }}
+                                    />
+                                    <Box sx={AddAnalyticStyles.question}>
+                                        <Typography>
+                                            Pendiente del segmento ST durante el ejercicio
+                                        </Typography>
+                                        <RadioGroup row aria-label="Pendiente del segmento ST durante el ejercicio" name="slopeOfThePeakExercise" value={slopeOfThePeakExercise} onChange={(e) => setSlopeOfThePeakExercise(e.target.value)}>
+                                            <FormControlLabel value="1" control={<Radio />} label="Pendiente ascendente" />
+                                            <FormControlLabel value="2" control={<Radio />} label="Pendiente plana" />
+                                            <FormControlLabel value="3" control={<Radio />} label="Pendiente descendente" />
+                                        </RadioGroup>
+                                    </Box>
+                                    <Box sx={AddAnalyticStyles.question}>
+                                        <Typography>
+                                            Número de vasos principales (entre 0 y 3) coloreados por fluoroscopia
+                                        </Typography>
+                                        <RadioGroup row aria-label="Número de vasos principales (entre 0 y 3) coloreados por fluoroscopia." name="numberOfMajorVessels" value={numberOfMajorVessels} onChange={(e) => setNumberOfMajorVessels(e.target.value)}>
+                                            <FormControlLabel value="0" control={<Radio />} label="0" />
+                                            <FormControlLabel value="1" control={<Radio />} label="1" />
+                                            <FormControlLabel value="2" control={<Radio />} label="2" />
+                                            <FormControlLabel value="3" control={<Radio />} label="3" />
+                                        </RadioGroup>
+                                    </Box>
+                                    <TextField
+                                        label="Tipo de talasemia que tiene el paciente"
+                                        type="number"
+                                        required
+                                        value={thal}
+                                        onChange={(e) => setThal(e.target.value)}
+                                        inputProps={{
+                                            min: 0
+                                        }}
+                                    />
                                     <Box sx={AddAnalyticStyles.question}>
                                         <TextField
                                             id="timestamp"

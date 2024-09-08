@@ -9,54 +9,39 @@ const useAddAnalytic = () => {
 
     const history = useHistory();
 
-    const [highBP, setHighBP] = useState('');
-    const [highChol, setHighChol] = useState('');
-    const [cholCheck, setCholCheck] = useState('');
-    const [imc, setImc] = useState('');
-    const [smoker, setSmoker] = useState('');
-    const [stroke, setStroke] = useState('');
-    const [diabetes, setDiabetes] = useState('');
-    const [physActivity, setPhysActivity] = useState('');
-    const [fruits, setFruits] = useState('');
-    const [veggies, setVeggies] = useState('');
-    const [hvyAlcoholConsump, setHvyAlcoholConsump] = useState('');
-    const [anyHealthcare, setAnyHealthcare] = useState('');
-    const [noDocbcCost, setNoDocbcCost] = useState('');
-    const [genHlth, setGenHlth] = useState('');
-    const [menthlth, setMenthlth] = useState('');
-    const [physHlth, setPhysHlth] = useState('');
-    const [diffWalk, setDiffWalk] = useState('');
     const [sex, setSex] = useState('');
     const [age, setAge] = useState('');
-    const [education, setEducation] = useState('');
-    const [income, setIncome] = useState('');
+    const [chestPainType, setChestPainType] = useState('');
+    const [restingBloodPressure, setRestingBloodPressure] = useState('');
+    const [serumCholestoral, setSerumCholestoral] = useState('');
+    const [fastingBloodSugar, setFastingBloodSugar] = useState('');
+    const [restingElectrocardiographicResults, setRestingElectrocardiographicResults] = useState('');
+    const [maximumHeartRateAchieved, setMaximumHeartRateAchieved] = useState('');
+    const [exerciseInducedAngina, setExerciseInducedAngina] = useState('');
+    const [oldpeak, setOldpeak] = useState('');
+    const [slopeOfThePeakExercise, setSlopeOfThePeakExercise] = useState('');
+    const [numberOfMajorVessels, setNumberOfMajorVessels] = useState('');
+    const [thal, setThal] = useState('');
     const [timestamp, setTimestamp] = useState<string>('');
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/analytics/add/', { 
-                highBP, 
-                highChol, 
-                cholCheck, 
-                imc, 
-                smoker, 
-                stroke, 
-                diabetes, 
-                physActivity, 
-                fruits, 
-                veggies, 
-                hvyAlcoholConsump, 
-                anyHealthcare, 
-                noDocbcCost, 
-                genHlth, 
-                menthlth, 
-                physHlth, 
-                diffWalk, 
+                heartDisease: 1,
                 sex, 
-                age, 
-                education, 
-                income,
+                age,  
+                chestPainType, 
+                restingBloodPressure, 
+                serumCholestoral, 
+                fastingBloodSugar, 
+                restingElectrocardiographicResults, 
+                maximumHeartRateAchieved, 
+                exerciseInducedAngina, 
+                oldpeak, 
+                slopeOfThePeakExercise, 
+                numberOfMajorVessels, 
+                thal,
                 timestamp
             }, 
             { 
@@ -72,12 +57,13 @@ const useAddAnalytic = () => {
         }
     };
 
-    return {highBP, setHighBP, highChol, setHighChol, cholCheck, setCholCheck, imc, setImc,
-        smoker, setSmoker, stroke, setStroke, diabetes, setDiabetes, physActivity, setPhysActivity,
-        fruits, setFruits, veggies, setVeggies, hvyAlcoholConsump, setHvyAlcoholConsump, 
-        anyHealthcare, setAnyHealthcare, noDocbcCost, setNoDocbcCost, genHlth, setGenHlth,
-        menthlth, setMenthlth, physHlth, setPhysHlth, diffWalk, setDiffWalk, sex, setSex,
-        age, setAge, education, setEducation, income, setIncome, timestamp, setTimestamp, handleSubmit
+    return {sex, setSex, age, setAge, chestPainType, setChestPainType,
+        restingBloodPressure, setRestingBloodPressure, serumCholestoral, setSerumCholestoral,
+        fastingBloodSugar, setFastingBloodSugar, restingElectrocardiographicResults, 
+        setRestingElectrocardiographicResults, maximumHeartRateAchieved, setMaximumHeartRateAchieved,
+        exerciseInducedAngina, setExerciseInducedAngina, oldpeak, setOldpeak,
+        slopeOfThePeakExercise, setSlopeOfThePeakExercise, numberOfMajorVessels, setNumberOfMajorVessels,
+        thal, setThal, timestamp, setTimestamp, handleSubmit
     };
 }
 
